@@ -18,12 +18,12 @@ Comment.init(
                 len: [1]
             }
         },
-        username : {
+        user_id : {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'username'
+                key: 'id'
             }
         },
         post_id: {
