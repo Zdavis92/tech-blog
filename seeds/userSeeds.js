@@ -26,7 +26,7 @@ const userdata = [
         email: 'gmidgley4@weather.com',
         password: 'password123'
     }
-];
+]
 
 const seedUsers = () => {
     User.bulkCreate(userdata, { individualHooks: true });

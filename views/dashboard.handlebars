@@ -1,6 +1,14 @@
 <div>
     <div>
-        posts here
+        <ul>
+            {{#each posts as |post|}}
+            <li>
+                <p>{{post.title}}</p>
+                <p>{{post.body}}</p>
+                <p>{{post.user_id}}</p>
+            </li>
+            {{/each}}
+        </ul>
     </div>
     <a>create new post</a>
 </div>
