@@ -34,34 +34,28 @@ router.get('/signup', (req, res) => {
     }
 });
 
-router.post('/user', (req, res) => {
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
+router.get('/dashboard',(req, res) => {
+    Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        attributes: [
+            'id',
+            'title',
+            'user_id',
+            'body',
+            'created_at'
+        ]
     })
-    .then(dbUserData => {
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
-
-            res.json(dbUserData);
-        })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.render('dashboard', { posts, loggedIn: true });
     })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    })
-})
+    });
+});
 
-router.get('/users', (req, res) => {
-    User.findAll({})
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    }) 
-})
 
 module.exports = router;
