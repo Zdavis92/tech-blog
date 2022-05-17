@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 
 router.get('/', (req, res) => {
     Post.findAll({
@@ -25,7 +25,28 @@ router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
-        }
+        },
+        attributes: [
+            'id',
+            'title',
+            'user_id',
+            'body',
+            'created_at'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            },
+            {
+                model: Comment,
+                attributes: ['comment_text', 'user_id', 'post_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
+        ]
     })
         .then(dbPostData => {
             if (!dbPostData) {
@@ -34,7 +55,11 @@ router.get('/:id', (req, res) => {
             }
 
             const post = dbPostData.get({ plain: true })
-            res.json(post)
+            if (req.session.loggedIn) {
+                res.render('blogPost', {post, loggedIn: true})
+            } else {
+                res.render('blogPost', {post, loggedIn: false})
+            }
         })
         .catch(err => {
             console.log(err);

@@ -1,14 +1,23 @@
 <div>
     <div>
-        <h2>post title</h2>
-        <p>post creater username</p>
-        <p>date created</p>
-        <p>post text</p>
+        <h2>{{post.title}}</h2>
+        <p>{{post.user.username}}</p>
+        <p>{{post.created_at}}</p>
+        <p>{{post.body}}</p>
+        {{#each post.comments as |comment|}}
+        <div>
+            <p>{{comment.comment_text}}</p>
+            <p>{{comment.user.username}}</p>
+        </div>
+        {{/each}}
     </div>
-    <div>
-        <form>
-            comment form here
-        </form>
-    </div>
+    {{#if loggedIn}}
+    <form>
+        <input type="text" placeholder="New comment" id="newCommentfield"/>
+        <button id="comment-btn">Add comment</button>
+    </form>
+    <script src="../javascript/comment.js"></script>
+    <script src="../javascript/logout.js"></script>
+    {{/if}}
     
 </div>
