@@ -1,12 +1,12 @@
-async function createUser(event) {
-    event.preventDefult();
+async function signUp(event) {
+    event.preventDefault();
 
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
-        const response = await fetch('/dashboard/user', {
+        const response = await fetch('/user', {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -17,12 +17,12 @@ async function createUser(event) {
         });
 
         if (response.ok) {
-            const newUser = response.json();
-            console.log(newUser)
+            alert('Signup was successful')
+            document.location.replace('/dashboard')
         } else {
-            alert(response.statusText)
+            alert(response.statusText);
         }
     }
 };
 
-document.querySelector('#signup-btn').addEventListener('click', createUser);
+document.querySelector('#signup-btn').addEventListener('click', signUp);
