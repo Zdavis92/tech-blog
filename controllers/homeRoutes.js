@@ -34,7 +34,29 @@ router.get('/', (req, res) => {
 
 router.get('/signup', (req, res) => {
     if (req.session.loggedIn) {
-        res.render('homepage',  {loggedIn: true});
+        Post.findAll({
+            attributes: [
+                'id',
+                'title',
+                'user_id',
+                'body',
+                'created_at'
+            ],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        })
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+                res.render('homepage',  {loggedIn: true, posts});
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
     } else {
         res.render('signup');
     }
