@@ -70,7 +70,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        user_id: req.body.user_id,
+        user_id: req.session.user_id,
         body: req.body.body
     })
         .then(dbPostData => {
