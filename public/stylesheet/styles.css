@@ -1,0 +1,50 @@
+.header {
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    background: #1a73bc;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.header a {
+    color: black;
+    font-size: 24px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 16px;
+    justify-content: space-evenly;
+}
+
+.container-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px 16px;
+    justify-content: space-evenly;
+    
+}
+
+.container-nav li {
+    padding: 20px;
+    display: block;
+}
+
+.container-nav button {
+    appearance: none;
+    font-size: 24px;
+    text-decoration: underline;
+    font-family: inherit;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
