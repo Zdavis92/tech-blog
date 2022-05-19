@@ -1,14 +1,12 @@
 <div>
-    <div>
-        <ul>
-            {{#each posts as |post|}}
-            <li>
-                <a href='/post/{{post.id}}'>{{post.title}}</a>
-                <p>{{post.body}}</p>
-                <p>{{user.username}}</p>
-                <p>{{post.created_at}}</p>
-            </li>
-            {{/each}}
-        </ul>
-    </div>
+    <ul class="post-container">
+        {{#each posts as |post|}}
+        <li class="card">
+            <a href='/post/{{post.id}}'>Title: {{post.title}}</a>
+            <p>{{post.body}}</p>
+            <p>Posted by {{user.username}}</p>
+            <p>at {{post.created_at}}</p>
+        </li>
+        {{/each}}
+    </ul>
 </div>

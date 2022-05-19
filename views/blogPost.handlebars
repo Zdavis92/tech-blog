@@ -1,18 +1,19 @@
+<link rel="stylesheet" href="../stylesheet/styles.css">
 <div>
-    <div>
-        <h2>{{post.title}}</h2>
-        <p>{{post.user.username}}</p>
-        <p>{{post.created_at}}</p>
+    <div class="card">
+        <h2>Title: {{post.title}}</h2>
+        <p>Posted by {{post.user.username}}</p>
+        <p>Created on {{post.created_at}}</p>
         <p>{{post.body}}</p>
+    </div>
         {{#each post.comments as |comment|}}
-        <div>
-            <p>{{comment.comment_text}}</p>
-            <p>{{comment.user.username}}</p>
+        <div class="card">
+            <p>Comment: {{comment.comment_text}}</p>
+            <p>By {{comment.user.username}}</p>
         </div>
         {{/each}}
-    </div>
     {{#if loggedIn}}
-    <form>
+    <form class="comment-form">
         <input type="text" placeholder="New comment" id="newCommentfield"/>
         <button id="comment-btn">Add comment</button>
     </form>

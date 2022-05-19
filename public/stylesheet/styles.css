@@ -11,6 +11,10 @@ h1 {
     font-size: 40px;
 }
 
+h2 {
+    font-size: 30px;
+}
+
 .header a {
     color: black;
     font-size: 24px;
@@ -47,4 +51,65 @@ h1 {
 	padding: 0;
 	cursor: pointer;
 	outline: inherit;
+}
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-container li {
+    display: block;
+}
+
+.card {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: rgb(247, 247, 235);
+    padding: 10px;
+    margin: 10px;
+}
+
+.card a {
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+}
+
+.add-post-btn {
+    margin-left: 50px;
+}
+
+.add-post-btn a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+.comment-form {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: rgb(247, 247, 235);
+}
+
+.comment-form input {
+    width: 300px;
+}
+
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-post-form input {
+    width: 50vw;
+}
+.new-post-form button {
+    width: 100px;
 }

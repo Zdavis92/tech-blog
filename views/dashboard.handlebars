@@ -1,15 +1,15 @@
 <div>
     <div>
         <h2>Your Posts</h2>
-        <ul>
+        <ul class="post-container">
             {{#each posts as |post|}}
-            <li>
-                <a href='/dashboard/{{post.id}}'>{{post.title}}</a>
+            <li class="card">
+                <a href='/dashboard/{{post.id}}'>Title {{post.title}}</a>
                 <p>{{post.body}}</p>
-                <p>{{post.created_at}}</p>
+                <p>created on {{post.created_at}}</p>
             </li>
             {{/each}}
         </ul>
     </div>
-    <button><a href="/dashboard/addPost">Add a new post</a></button>
+    <button class="add-post-btn"><a href="/dashboard/addPost">Add a new post</a></button>
 </div>
